@@ -1,11 +1,9 @@
 package com.dm.loanrequest.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "LoanRequest", indexes = [Index(name = "idx_customer_id", columnList = "customerId")])
 data class LoanRequest(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
