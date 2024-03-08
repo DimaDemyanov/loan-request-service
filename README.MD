@@ -21,7 +21,7 @@ To get the service up and running, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/DimaDemyanov/loan-request-service
    ```
 
 2. Navigate to the project directory:
@@ -36,7 +36,7 @@ To get the service up and running, follow these steps:
 
 4. Start the PostgreSQL and Redis services using Docker:
    ```
-   docker-compose up -d postgres redis
+   docker-compose -f deployment/docker-compose.yml up -d
    ```
 
 5. Run the application:

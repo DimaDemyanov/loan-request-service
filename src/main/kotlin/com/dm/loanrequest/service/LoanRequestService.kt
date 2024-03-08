@@ -2,26 +2,35 @@ package com.dm.loanrequest.service
 
 import com.dm.loanrequest.model.LoanRequest
 import com.dm.loanrequest.repository.LoanRequestRepository
+import jakarta.transaction.Transactional
+import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 
-import org.slf4j.LoggerFactory
 
 @Service
-class LoanRequestService(
-    private val loanRequestRepository: LoanRequestRepository,
-    private val redisTemplate: RedisTemplate<String, BigDecimal>
+open class LoanRequestService(
+     open val loanRequestRepository: LoanRequestRepository,
+     open val redisTemplate: RedisTemplate<String, BigDecimal>
 ) {
-    private val totalLoanAmountKey = "totalLoanAmount"
+    companion object {
+        private val totalLoanAmountKey = "totalLoanAmount"
+        private val logger = LoggerFactory.getLogger(LoanRequestService::class.java)
+    }
 
-    private val logger = LoggerFactory.getLogger(javaClass)
+    @Transactional
+    open fun createLoanRequest(loanRequest: LoanRequest): LoanRequest {
+        try {
+            val savedRequest = loanRequestRepository.save(loanRequest)
+            logger.info("Saved loan request: {}", savedRequest)
+            updateTotalInRedis(savedRequest.customerId, BigDecimal.valueOf(savedRequest.amount))
 
-    fun createLoanRequest(loanRequest: LoanRequest): LoanRequest {
-        val savedRequest = loanRequestRepository.save(loanRequest)
-        logger.info("Saved loan request: {}", savedRequest)
-        updateTotalInRedis(savedRequest.customerId, BigDecimal.valueOf(savedRequest.amount))
-        return savedRequest
+            return savedRequest
+        } catch (e: Exception) {
+            logger.error("Error creating loan request: ${e.message}")
+            throw e
+        }
     }
 
     private fun updateTotalInRedis(customerId: Long, amount: BigDecimal) {

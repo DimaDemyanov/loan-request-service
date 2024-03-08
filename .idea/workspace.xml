@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="Added Redis for caching">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/integration-test/IntegrationTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deployment/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/deployment/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/config/RedisConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/config/RedisConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" afterDir="false" />
-    </list>
+    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="Made changes to be transactional" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +46,7 @@
     "JUnit.IntegrationTest (1).executor": "Run",
     "JUnit.IntegrationTest.executor": "Run",
     "JUnit.IntegrationTest.should create a loan request and retrieve the correct total loan amount.executor": "Run",
+    "JUnit.IntegrationTest.should reject invalid loan request.executor": "Run",
     "JUnit.IntegrationTest.should update total loan amount correctly when new loan is added.executor": "Run",
     "JUnit.LoanRequestControllerTest.executor": "Run",
     "JUnit.LoanRequestServiceTest.executor": "Run",
@@ -79,7 +70,54 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.kotlin in loan-request-service">
+  <component name="RunManager" selected="Kotlin.LoanRequestApplicationKt">
+    <configuration name="IntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-request-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dm.loanrequest.integrationtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dm.loanrequest.integrationtest" />
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.integrationtest.IntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTest.should create a loan request and retrieve the correct total loan amount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-request-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dm.loanrequest.integrationtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dm.loanrequest.integrationtest" />
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.integrationtest.IntegrationTest" />
+      <option name="METHOD_NAME" value="should create a loan request and retrieve the correct total loan amount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTest.should reject invalid loan request" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-request-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dm.loanrequest.integrationtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dm.loanrequest.integrationtest" />
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.integrationtest.IntegrationTest" />
+      <option name="METHOD_NAME" value="should reject invalid loan request" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="kotlin in loan-request-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="loan-request-service" />
       <option name="TEST_OBJECT" value="directory" />
@@ -103,47 +141,13 @@
       <deployment type="dockerfile" />
       <method v="2" />
     </configuration>
-    <configuration name="deployment: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="deployment.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="deployment.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="redis" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.kotlin in loan-request-service" />
         <item itemvalue="Kotlin.LoanRequestApplicationKt" />
-        <item itemvalue="Docker.deployment.redis: Compose Deployment" />
-        <item itemvalue="Docker.deployment.db: Compose Deployment" />
-        <item itemvalue="Docker.deployment: Compose Deployment" />
+        <item itemvalue="JUnit.kotlin in loan-request-service" />
+        <item itemvalue="JUnit.IntegrationTest" />
+        <item itemvalue="JUnit.IntegrationTest.should create a loan request and retrieve the correct total loan amount" />
+        <item itemvalue="JUnit.IntegrationTest.should reject invalid loan request" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +191,39 @@
       <option name="project" value="LOCAL" />
       <updated>1709903304981</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="The first stable version + Readme + Dockerfile">
+      <option name="closed" value="true" />
+      <created>1709908259928</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709908259928</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Removed Dockerfile">
+      <option name="closed" value="true" />
+      <created>1709911185960</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709911185961</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added index on customerId and some documentation">
+      <option name="closed" value="true" />
+      <created>1709911764606</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709911764607</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Made changes to be transactional">
+      <option name="closed" value="true" />
+      <created>1709917497265</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709917497265</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,7 +241,11 @@
     <MESSAGE value="Project structure set" />
     <MESSAGE value="Working version with Postgres" />
     <MESSAGE value="Added Redis for caching" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Redis for caching" />
+    <MESSAGE value="The first stable version + Readme + Dockerfile" />
+    <MESSAGE value="Removed Dockerfile" />
+    <MESSAGE value="Added index on customerId and some documentation" />
+    <MESSAGE value="Made changes to be transactional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made changes to be transactional" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -214,6 +254,14 @@
           <url>file://$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/LoanRequestApplication.kt</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/integration-test/IntegrationTest.kt</url>
+          <line>49</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

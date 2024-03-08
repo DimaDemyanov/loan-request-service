@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
@@ -16,6 +18,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.springframework.data.redis.core.StringRedisTemplate
+import org.testcontainers.containers.wait.strategy.Wait
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -33,7 +36,10 @@ class IntegrationTest {
         val postgreSQLContainer: PostgreSQLContainer<*> = PostgreSQLContainer("postgres:latest")
 
         @Container
-        val redisContainer: GenericContainer<*> = GenericContainer("redis:latest").withExposedPorts(6379)
+        val redisContainer = GenericContainer<Nothing>("redis:latest").apply {
+            withExposedPorts(6379)
+            waitingFor(Wait.forListeningPort()) // Wait until Redis is ready
+        }
 
         @JvmStatic
         @DynamicPropertySource
@@ -41,19 +47,14 @@ class IntegrationTest {
             registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl)
             registry.add("spring.datasource.username", postgreSQLContainer::getUsername)
             registry.add("spring.datasource.password", postgreSQLContainer::getPassword)
-            registry.add("spring.redis.host") { redisContainer.host }
-            registry.add("spring.redis.port") { redisContainer.firstMappedPort.toString() }
+            registry.add("spring.data.redis.host") { redisContainer.host }
+            registry.add("spring.data.redis.port") { redisContainer.getMappedPort(6379).toString() }
         }
     }
 
-    @BeforeEach
-    fun setUp() {
-        // Optional: If there's specific setup needed before each test
-    }
 
     @AfterEach
     fun tearDown() {
-        // Clear Redis data after each test to ensure test isolation
         redisTemplate.connectionFactory.connection.flushDb()
     }
 
