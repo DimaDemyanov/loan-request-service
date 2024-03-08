@@ -4,6 +4,7 @@ import com.dm.loanrequest.model.LoanRequest
 import com.dm.loanrequest.service.LoanRequestService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.math.BigDecimal
 
 @RestController
 @RequestMapping("/loan-requests")
@@ -19,7 +20,8 @@ class LoanRequestController(private val loanRequestService: LoanRequestService) 
         }
     }
 
-    fun getTotalLoanAmountByCustomerId(@PathVariable customerId: Long): ResponseEntity<Double> =
+    @GetMapping("/total-amount/{customerId}")
+    fun getTotalLoanAmountByCustomerId(@PathVariable customerId: Long): ResponseEntity<BigDecimal> =
         ResponseEntity.ok(loanRequestService.getTotalLoanAmountByCustomerId(customerId))
 
     private fun validateLoanRequest(loanRequest: LoanRequest): Map<String, String> {
