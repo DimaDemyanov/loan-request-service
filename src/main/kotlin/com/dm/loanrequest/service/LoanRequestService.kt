@@ -5,7 +5,7 @@ import com.dm.loanrequest.repository.LoanRequestRepository
 import org.springframework.stereotype.Service
 
 @Service
-class LoanRequestService(private val loanRequestRepository: LoanRequestRepository) {
+open class LoanRequestService(private val loanRequestRepository: LoanRequestRepository) {
     fun createLoanRequest(loanRequest: LoanRequest): LoanRequest = loanRequestRepository.save(loanRequest)
 
     fun getTotalLoanAmountByCustomerId(customerId: Long): Double =

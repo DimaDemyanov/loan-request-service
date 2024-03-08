@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/LoanRequestApplication.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/model/LoanRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/repository/LoanRequestRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" afterDir="false" />
+    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="Project structure set">
+      <change afterPath="$PROJECT_DIR$/deployment/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/controller/LoanRequestControllerTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/service/LoanRequestServiceTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/LoanRequestApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/LoanRequestApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/model/LoanRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/model/LoanRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -36,9 +33,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2dKpxgmaRPb6KdU4WsGBOqwjzIH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -47,8 +47,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.deployment.db: Compose Deployment.executor": "Run",
+    "Docker.deployment: Compose Deployment.executor": "Run",
+    "JUnit.LoanRequestControllerTest.executor": "Run",
+    "JUnit.LoanRequestServiceTest.executor": "Run",
+    "Kotlin.LoanRequestApplicationKt.executor": "Run",
     "Maven.loan-request-service [clean].executor": "Run",
     "Maven.loan-request-service [package].executor": "Run",
+    "Maven.loan-request-service [validate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -63,6 +69,79 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.LoanRequestControllerTest">
+    <configuration name="LoanRequestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-request-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dm.loanrequest.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dm.loanrequest.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.controller.LoanRequestControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoanRequestServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-request-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dm.loanrequest.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dm.loanrequest.service" />
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.service.LoanRequestServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoanRequestApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.LoanRequestApplicationKt" />
+      <module name="loan-request-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="deployment: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="deployment.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LoanRequestControllerTest" />
+        <item itemvalue="Kotlin.LoanRequestApplicationKt" />
+        <item itemvalue="JUnit.LoanRequestServiceTest" />
+        <item itemvalue="Docker.deployment.db: Compose Deployment" />
+        <item itemvalue="Docker.deployment: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -80,7 +159,31 @@
       <option name="presentableId" value="Default" />
       <updated>1709766875289</updated>
     </task>
+    <task id="LOCAL-00001" summary="Project structure set">
+      <option name="closed" value="true" />
+      <created>1709768883859</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709768883859</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project structure set" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project structure set" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

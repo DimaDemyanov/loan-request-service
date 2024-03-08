@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: loan_request_app
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secretpassword
+    ports:
+      - "5432:5432"
