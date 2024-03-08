@@ -16,11 +16,3 @@ services:
     restart: always
     ports:
       - "6379:6379"
-
-  loanrequest:
-    build: ../.
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-      - redis
