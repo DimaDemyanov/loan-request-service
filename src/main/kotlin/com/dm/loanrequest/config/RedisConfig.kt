@@ -5,14 +5,20 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.GenericToStringSerializer
+import org.springframework.data.redis.serializer.StringRedisSerializer
+import java.math.BigDecimal
 
 @Configuration
 open class RedisConfig {
     @Bean
-    open fun redisTemplate(redisConnectionFactory: RedisConnectionFactory): RedisTemplate<*, *> {
-        val template = RedisTemplate<Any, Any>()
+    open fun redisTemplate(redisConnectionFactory: RedisConnectionFactory): RedisTemplate<String, BigDecimal> {
+        val template = RedisTemplate<String, BigDecimal>()
         template.connectionFactory = redisConnectionFactory
-        template.valueSerializer = GenericToStringSerializer(Any::class.java)
+        // Set the string serializer for the keys
+        template.keySerializer = StringRedisSerializer()
+        // Use a serializer that can handle BigDecimal for the values
+        template.valueSerializer = GenericToStringSerializer(BigDecimal::class.java)
         return template
     }
+
 }

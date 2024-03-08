@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="Working version with Postgres">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/config/RedisConfig.kt" afterDir="false" />
+    <list default="true" id="75529ab6-4a98-4cb3-ada3-67ca09627cfd" name="Changes" comment="Added Redis for caching">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/integration-test/IntegrationTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deployment/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/deployment/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/config/RedisConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/config/RedisConfig.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/controller/LoanRequestController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest/service/LoanRequestService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/service/LoanRequestServiceTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/dm/loanrequest/service/LoanRequestServiceTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +31,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
@@ -44,9 +48,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.Dockerfile.executor": "Run",
     "Docker.deployment.db: Compose Deployment.executor": "Run",
+    "Docker.deployment.loanrequest: Compose Deployment.executor": "Run",
     "Docker.deployment.redis: Compose Deployment.executor": "Run",
     "Docker.deployment: Compose Deployment.executor": "Run",
+    "JUnit.IntegrationTest (1).executor": "Run",
+    "JUnit.IntegrationTest.executor": "Run",
+    "JUnit.IntegrationTest.should create a loan request and retrieve the correct total loan amount.executor": "Run",
+    "JUnit.IntegrationTest.should update total loan amount correctly when new loan is added.executor": "Run",
     "JUnit.LoanRequestControllerTest.executor": "Run",
     "JUnit.LoanRequestServiceTest.executor": "Run",
     "JUnit.kotlin in loan-request-service.executor": "Run",
@@ -69,37 +79,7 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/dm/loanrequest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoanRequestServiceTest">
-    <configuration name="LoanRequestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="loan-request-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dm.loanrequest.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.dm.loanrequest.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.controller.LoanRequestControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoanRequestServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="loan-request-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dm.loanrequest.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.dm.loanrequest.service" />
-      <option name="MAIN_CLASS_NAME" value="com.dm.loanrequest.service.LoanRequestServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.kotlin in loan-request-service">
     <configuration name="kotlin in loan-request-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="loan-request-service" />
       <option name="TEST_OBJECT" value="directory" />
@@ -119,6 +99,31 @@
       <deployment type="docker-compose.yml" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="deployment: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="deployment.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="deployment.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -134,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoanRequestServiceTest" />
         <item itemvalue="JUnit.kotlin in loan-request-service" />
         <item itemvalue="Kotlin.LoanRequestApplicationKt" />
         <item itemvalue="Docker.deployment.redis: Compose Deployment" />
-        <item itemvalue="JUnit.LoanRequestControllerTest" />
+        <item itemvalue="Docker.deployment.db: Compose Deployment" />
+        <item itemvalue="Docker.deployment: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709900006705</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Redis for caching">
+      <option name="closed" value="true" />
+      <created>1709903304981</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709903304981</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,7 +204,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project structure set" />
     <MESSAGE value="Working version with Postgres" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working version with Postgres" />
+    <MESSAGE value="Added Redis for caching" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Redis for caching" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
